@@ -1,0 +1,53 @@
+@import 'normalize-scss';
+@include normalize();
+
+.App {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: auto;
+
+  header {
+    font-size: 64px;
+    text-align: center;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+
+    > * {
+      margin-bottom: 5px;
+    }
+
+    textarea {
+      height: 300px;
+    }
+  }
+
+  .results {
+    padding: 5px;
+  }
+  .error {
+    background-color: #faa;
+  }
+  .no_matches {
+    background-color: #ffa;
+  }
+  .matches {
+    background-color: #afa;
+  }
+  table {
+    border-collapse: collapse;
+    th, td {
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      padding: 5px;
+    }
+    th {
+      border-bottom: 1px solid #ccc;
+    }
+    th {
+      text-align: left;
+    }
+  }
+}
