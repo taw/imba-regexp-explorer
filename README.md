@@ -1,6 +1,6 @@
-# imba-boilerplate
+# imba-regexp-explorer
 
-RegExp explorer in Imba.
+RegExp Explorer in Imba.
 
 ## Install dependencies
 
