@@ -3,6 +3,8 @@ tag Matches
     <self>
       <table>
         <tr>
+          <th>
+            "Index"
           for i, m in data[0]
             <th>
               if m == 0
@@ -11,6 +13,8 @@ tag Matches
                 "Group {m}"
         for match in data
           <tr>
+            <td>
+              match:index
             for m in match
               <td>
                 m
@@ -19,10 +23,14 @@ tag GoodResults
   prop regexp
   prop text
 
+  # Javascript is stupid and lacks really basic stuff like this
   def scan
+    let max_matches = 100
     let matches = []
     let match
-    while match = regexp.exec(text)
+    while (match = regexp.exec(text)) && matches:length < max_matches
+      if match[0]:length == 0
+        regexp:lastIndex = match:index + 1
       matches.push(match)
     matches
 
@@ -31,7 +39,10 @@ tag GoodResults
     <self>
       if matches:length
         <div.results.matches>
-          "{matches:length} matches found"
+          if matches:length == 100
+            "{matches:length} or more matches found"
+          else
+            "{matches:length} matches found"
         <Matches[matches]>
       else
         <div.results.no_matches>
@@ -72,8 +83,7 @@ tag App
         <input[@regexp]#regexp>
         <label for="text">
           "Tested Text"
-        # spellcheck=false but imba doesn't like that
-        <textarea[@text]#text>
+        <textarea[@text]#text spellcheck=false>
       <Results regexp=@regexp text=@text>
 
 Imba.mount <App>
