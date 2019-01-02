@@ -1,6 +1,6 @@
 # imba-regexp-explorer
 
-RegExp Explorer in Imba.
+`RegExp` Explorer in Imba. [You can see in in action here](https://taw.github.io/imba-regexp-explorer).
 
 ## Install dependencies
 
